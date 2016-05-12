@@ -67,10 +67,10 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .keyword {
-  color: @purple;
+  color: @blue;
 
   &.control {
-    color: @purple;
+    color: @blue;
   }
 
   &.operator {
@@ -87,7 +87,7 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .storage {
-  color: @purple;
+  color: @blue;
 }
 
 .constant {
@@ -98,7 +98,7 @@ atom-text-editor .search-results .marker.current-result .region,
   }
 
   &.numeric {
-    color: @orange;
+    color: @green;
   }
 
   &.other.color {
@@ -155,12 +155,12 @@ atom-text-editor .search-results .marker.current-result .region,
 
     &.string {
         color: @yellow;
+        &.begin, &.end {
+            color: @yellow;
+        }
     }
     &.variable, &.parameters {
         color: @very-light-gray;
-    }
-    &.variable.php {
-      color: @blue;
     }
     &.array,
     &.tag.html {
@@ -181,7 +181,7 @@ atom-text-editor .search-results .marker.current-result .region,
       color: @purple;
       font-style: italic;
     }
-    &.bracket, &.scope {
+    &.bracket, &.scope, {
         &.begin, &.end {
             color: @blue;
         }
@@ -196,11 +196,11 @@ atom-text-editor .search-results .marker.current-result .region,
 
 .support {
   &.class {
-    color: @light-orange;
+    color: @blue;//@light-orange;
   }
 
   &.function  {
-    color: @cyan;
+    color: @blue;//@cyan;
 
     &.any-method {
       color: @blue;
@@ -232,7 +232,7 @@ atom-text-editor .search-results .marker.current-result .region,
   }
 
   &.other.attribute-name {
-    color: @green;
+    color: @blue;
 
     &.id {
       color: @blue;
@@ -263,7 +263,8 @@ atom-text-editor .search-results .marker.current-result .region,
   }
 
   &.delimiter,
-  &.brace {
+  &.brace,
+  &.tag.html.any {
     color: @blue;
   }
 
@@ -323,4 +324,64 @@ atom-text-editor .search-results .marker.current-result .region,
 atom-text-editor[mini] .scroll-view,
 :host([mini]) .scroll-view {
   padding-left: 1px;
+}
+
+// File type specific
+
+.html {
+    &.doctype {
+        color: @light-gray;
+    }
+    &.source.js.embedded {
+        color: @blue;
+    }
+}
+
+.js, .php {
+    &.punctuation {
+        &.begin, &.end {
+            color: @blue;
+        }
+    }
+    &.support {
+        color: @cyan;
+    }
+}
+
+.php {
+    &.variable, &.definition, &.function-call, &.function.name {
+        color: @very-light-gray;
+    }
+    &.source {
+        color: @blue;
+    }
+    &.support {
+        color: @cyan;
+    }
+    &.embedded.punctuation {
+        &.begin, &.end, .source {
+            color: @orange;
+        }
+    }
+}
+
+.less, .css, .scss {
+    &.entity-other, .entity.other.attribute-name {
+        color: @very-light-gray;
+    }
+    .entity {
+        color: @very-light-gray;
+    }
+    &.entity.name.tag {
+        color: @orange;
+    }
+    &.source, &.punctuation, .punctuation {
+        color: @blue;
+    }
+    &.constant, &.unit, &.other.unit, &.property-value, &.parameter {
+        color: @green;
+    }
+    &.support.misc {
+        color: @cyan;
+    }
 }
